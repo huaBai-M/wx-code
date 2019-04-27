@@ -1,0 +1,53 @@
+<!--pages/callLists/callLists.wxml-->
+<page>
+    <view class="pageBody">
+        <view class='list' wx:for='{{cardData}}' wx:key="{{ index }}">
+            <view class='date'><text >{{item.visitTime}}</text> 来自
+            <text wx:if="{{item.source==0}}">转发</text>
+            <text wx:if="{{item.source==3||item.source==null}}">搜索</text>
+            <text wx:if="{{item.source==1}}">扫码</text>
+            <text wx:if="{{item.source==2}}">扫码</text>
+            </view>
+            <!-- id=1 -->
+            <view class='con1' data-card-index="{{index}}" bindtap='clickCard'>
+                <view class="content">
+
+                <view class='leftContent'>
+                    <view class='name'>{{item.emplyName==null?'':item.emplyName}}<text class='job'>{{item.title==null?'':item.title}}</text></view>
+                    <view class='line'></view>
+                </view>
+                <view class='rightContent'>
+                    <image src="{{item.headImageUrl==null?'https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/head.jpg':item.headImageUrl}}" mode='widthFix'></image>
+                </view>
+                <view class='leftBottomContent'>
+                    <view class='tel'><text class='iconfont icon-web-icon-'></text>{{item.telphone==null?'':item.telphone}}</view>
+                    <view class='mail'><text class='iconfont icon-youxiang'></text>{{item.email==null?'':item.email}}</view>
+                    <view class='company'  wx:if="{{item.company!=null && item.company!=''}}">
+                    <text class='iconfont icon-gongsimingcheng'></text>{{item.company==null?'':item.company}}</view>
+                </view>
+                <view class='rightBottomContent'><image src="{{companyData.companyLogo}}" mode='widthFix'></image></view>
+                <view class='Shield' wx:if="{{item.status==-1}}">
+                      此名片已屏蔽
+                </view>
+              </view>
+             
+            </view>
+             <view class='btns'>
+              <button class='shareBtn' wx:if="{{item.status==0}}"  open-type="share" data-card-index="{{index}}" bindtap='getGlobal'><text class='iconfont icon-fenxiang' ></text>分享</button>
+              <view class='delete' wx:if="{{item.status==0}}"data-card-i="{{index}}" bindtap='deleteCall' data-card-index="{{item}}"><text class='iconfont icon-icon_del'></text>屏蔽</view>
+              <view class='delete'  wx:if="{{item.status==-1}}" bindtap='openCardPage' data-card-i="{{index}}" data-card-index="{{item}}">开启</view>
+              <view class='delete'  catchtap='_openGroup' data-card-index="{{item}}" wx:if="{{item.groupName==null}}">
+                <text class='iconfont icon-fenzutongji' ></text>
+                分组
+              </view>
+               <view class='delete'   wx:if="{{start==''&&item.groupName!=null}}">
+               {{ item.groupName}}
+              </view>
+              <view class='delete'   wx:if="{{start=='grounp'}}" data-card-i="{{index}}" data-card-index="{{item}}" bindtap='rmGroup'>
+               <text class='iconfont icon-jian' ></text>
+               移出
+              </view>
+              </view>
+        </view>
+    </view>
+</page>

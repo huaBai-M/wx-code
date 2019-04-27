@@ -1,0 +1,81 @@
+{
+  "pages": [
+      "pages/Bootpage/Bootpage",
+    "pages/newPro/newPro",
+    "pages/changePhone/changePhone",
+    "pages/myMsg/myMsg",
+    "pages/updateMsg/updateMsg",
+    
+    "pages/index/index",
+    "pages/callLists/callLists",
+    "pages/detail/detail",
+    "pages/logs/logs",
+    "pages/products/products",
+    "pages/message/message",
+    "pages/recentchat/recentchat",
+    "pages/pop/pop",
+    "pages/video/video",
+    "pages/play/play",
+    "pages/Propaganda/Propaganda",
+    "pages/callGroup/callGroup",
+    "pages/addCallGroup/addCallGroup",
+    "pages/components/whole/whole",
+    "pages/components/group/group",
+    "pages/code/code",
+    "pages/bangding/bangding",
+    "pages/login/login",
+    "pages/AI/AI",
+    "pages/AIHref/AIHref",
+    "pages/trajectory/trajectory",
+    "pages/newCard/newCard"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#949bb7",
+    "selectedColor": "#006CFF",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "iconPath": "images/icon_homepage_unclicked.png",
+        "selectedIconPath": "images/icon_homepage_clicked.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "iconPath": "images/icon_product_unclicked.png",
+        "selectedIconPath": "images/icon_product_clicked.png",
+        "pagePath": "pages/products/products",
+        "text": "产品"
+      },
+      {
+        "iconPath": "images/icon_video_unclicked.png",
+        "selectedIconPath": "images/icon_video_clicked.png",
+        "pagePath": "pages/video/video",
+        "text": "看看"
+      },
+      {
+        "iconPath": "images/icon_message_unclicked.png",
+        "selectedIconPath": "images/icon_message_clicked.png",
+        "pagePath": "pages/recentchat/recentchat",
+        "text": "消息"
+      }
+    ]
+  },
+  "usingComponents": {
+    "pop": "pages/pop/pop",
+    "van-toast": "/dist/toast/index",
+    "whole": "pages/components/whole/whole",
+    "group": "pages/components/group/group",
+    "van-tabbar": "/dist/tabbar/index",
+    "van-tabbar-item": "/dist/tabbar-item/index"
+  },
+"navigateToMiniProgramAppIdList": [
+    "wx2cc6c9258fa1659a"
+]
+}

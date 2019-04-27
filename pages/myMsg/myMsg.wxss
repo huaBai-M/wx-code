@@ -1,0 +1,88 @@
+/* pages/myMsg/myMsg.wxss */
+page {
+    width: 100%;
+    height: 100%;
+}
+.pageBody {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f0f8ff;
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 70px;
+}
+.head-top {
+    background-color: #00a0e9;
+    display: flex;
+    padding: 0 5% 0 5%;
+    height: 230rpx;
+    border-radius: 0 0 40% 40%;
+}
+.head-top .head-img {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.head-top .head-img image {
+    width: 100%;
+}
+.head-top .head-msg {
+    margin-left: 40rpx;
+    color: #fff;
+    padding-top: 10rpx;
+}
+.head-top .head-msg .name {
+    font-size: 32rpx;
+}
+.head-top .head-msg .time {
+    font-size: 32rpx;
+    margin-top: 10rpx;
+}
+.btn-click {
+    margin-top: -40px;
+    width: 92%;
+    margin-left: 4%;
+    background-color: #fff;
+    padding: 35rpx 0;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 0 20rpx #add7eb;
+    align-items: center;
+    justify-content: center;
+}
+.btn-click image {
+    width: 65rpx;
+    vertical-align: middle;
+    margin-right: 30rpx;
+}
+.btn-click>view {
+    width: 49%;
+    text-align: center;
+    color: #333;
+    font-size: 30rpx;
+}
+.btn-click .to-pro {
+    border-right: 1px solid #ccc;
+}
+.btns-click {
+    margin-top: 20px;
+    width: 92%;
+    margin-left: 4%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20rpx #add7eb;
+    padding: 50rpx 0 0 0;
+}
+.btns-click image {
+    width: 65rpx;
+}
+.btns-click .van-col--6 {
+    text-align: center;
+    font-size: 26rpx;
+    color: #666;
+    margin-bottom: 50rpx;
+}
+.btns-click .text-row {
+    margin-top: 10rpx;
+}

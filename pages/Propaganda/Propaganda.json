@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "生意帮名片",
+  "usingComponents": {
+    "van-dialog": "/dist/dialog/index",
+    "van-popup": "/dist/popup/index",
+    "van-toast": "/dist/toast/index"
+  }
+}

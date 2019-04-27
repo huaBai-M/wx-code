@@ -1,0 +1,33 @@
+<!--pages/myMsg/myMsg.wxml-->
+<page>
+  <pop id='dialog'></pop>
+    <view class="pageBody">
+      <view class='head-top'>
+        <view class='head-img'><image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/head.jpg' mode='widthFix'></image></view>
+        <view class='head-msg'>
+            <view class='name'>{{cardData.name}}张曼玉</view>
+            <view class='time'>到期时间：{{cardData.time}}2019/01/02</view>
+        </view>
+      </view>
+
+      <view class='btn-click'>
+        <view class='to-pro'> <image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon-01@2x.png' mode='widthFix'></image> 产品</view>
+        <view class='to-video'><image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon-2@2x.png' mode='widthFix'></image>看看</view>
+      </view>
+
+
+
+      <view class='btns-click'>
+        <van-row>
+            <van-col span="6"><image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon1@2x.png' mode='widthFix'></image><view class='text-row'>周报表</view></van-col>
+            <van-col span="6"><image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon2@2x.png' mode='widthFix'></image><view class='text-row'>每日海报</view></van-col>
+            <van-col span="6"><image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon3@2x.png' mode='widthFix'></image><view class='text-row'>客户管理</view></van-col>
+            <van-col span="6"><image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon4@2x.png' mode='widthFix'></image><view class='text-row'>客户公海</view></van-col>
+            <van-col span="6"><image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon5@2x.png' mode='widthFix'></image><view class='text-row'>添加成员</view></van-col>
+            <van-col span="6"><image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon6@2x.png' mode='widthFix'></image><view class='text-row'>公司信息</view></van-col>
+            <van-col span="6"><image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon7@2x.png' mode='widthFix'></image><view class='text-row'>企业大数据</view></van-col>
+            <van-col span="6"><image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/mine/icon8@2x.png' mode='widthFix'></image><view class='text-row'>意见反馈</view></van-col>
+        </van-row>
+      </view>
+    </view>
+</page>

@@ -1,0 +1,71 @@
+<!--pages/products/products.wxml-->
+<page>
+    <pop id='dialog'></pop>
+    <view class="pageBody">
+      <!-- 轮播图  -->
+      <view class='swipers' wx:if="{{bannerState}}">
+         <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="500" circular="true" previous-margin='20px' next-margin='20px'>
+            <block wx:for="{{productBanner}}" wx:key="index">
+                
+                <swiper-item><image src='{{item}}' class='img'></image></swiper-item>
+            </block>  
+         </swiper >
+      </view>
+      <!-- 产品列表 -->
+      <view class='pro-all' wx:if="{{proState}}">
+        <view class='proLists'>
+         <view class='list' wx:for="{{products}}" wx:key="{{ index }}" data-product-Index='{{index}}' bindtap='clickPro'>
+           <view class='proImg'><image src='{{item.banner}}' mode='widthFix'></image></view>
+           <view class='proMesg'>
+              <view class='name'>{{item.productName}}</view>
+              <view class='remark'>{{item.html==null?'':item.html}}</view>
+              <view class='num'>已有{{item.todayVisitCount==null?0:item.todayVisitCount}}人查看<image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon_popularity.png' mode='widthFix'></image><image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon_popularity.png' mode='widthFix'></image></view>
+           </view>
+         </view>
+         
+         </view>
+        <view class='tiltes' wx:if="{{state}}">没有更多数据了~</view>
+      </view>
+      <view class='productNull' wx:if="{{!proState}}">
+        <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon1@2x.png' mode='widthFix'></image>
+        <view class='proN'>暂无产品</view>
+        <view class='titleA'>暂无产品推荐，可开通会员使用更多功能。
+        <view>请联系客服热线 <text>{{cardMian}}</text></view>
+        </view>
+      </view>
+
+      <!-- 侧边栏 -->
+       <view class='side' hidden="{{loginState==1}}">
+         <view class='sideShow' wx:if='{{sideHide}}' bindtap='clickSide'><text class='iconfont icon-gengduo'></text></view>
+         <view class='sideHide' wx:if='{{!sideHide}}'>
+            <view  class="iconfont icon-liuyan {{white==false?'blue':'white'}} btnMessage" bindtap='clickBlue' wx:if="{{stateShouQuan}}"></view>
+            <button  open-type='getPhoneNumber' wx:if="{{!stateShouQuan}}" bindgetphonenumber="getPhoneNumbers" class="iconfont icon-liuyan {{white==false?'blue':'white'}} btnMessage"></button>
+            <view class="iconfont icon-web-icon- {{white==false?'white':'blue'}}" bindtap='clickWhite'></view>
+         </view>
+      </view>
+    </view>
+
+
+
+    <van-tabbar
+        active="{{ active }}"
+        bind:change="onChangeTab"
+        >
+        <van-tabbar-item icon="friends-o">首页</van-tabbar-item>
+        <van-tabbar-item>
+        <image
+            slot="icon"
+            src="{{ icon.normal }}"
+            mode="aspectFit"
+            />
+            <image
+            slot="icon-active"
+            src="{{ icon.active }}"
+            mode="aspectFit"
+            />
+        
+        产品</van-tabbar-item>
+        <van-tabbar-item icon="friends-o">看看</van-tabbar-item>
+        <van-tabbar-item icon="setting-o">消息</van-tabbar-item>
+  </van-tabbar>
+</page>

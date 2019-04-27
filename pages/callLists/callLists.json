@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "名片列表",
+  "usingComponents": {
+    "van-tab": "../../dist/tab/index",
+    "van-tabs": "../../dist/tabs/index",
+    "van-dialog": "../../dist/dialog/index",
+    "van-popup": "../../dist/popup/index",
+    "van-area": "../../dist/area/index",
+    "van-picker": "../../dist/picker/index",
+    "van-card": "../../dist/card/index",
+    "van-toast": "../../dist/toast/index"
+  }
+}

@@ -1,0 +1,19 @@
+<view class='group_content' wx:if="{{groupList.length>0}}">
+  <view class='group_contentList' bindtap='allGroup' wx:for="{{groupList}}" wx:for-index="index" wx:for-item="item"  wx:key="index" data-value="{{item}}">
+    <view class='group_contentLeft'>
+        <view class='img' wx:for="{{groupList[index].relations}}" wx:for-index="j" wx:for-item="itemT"  wx:key="j">
+          <image src='{{itemT.headImageUrl}}' wx:if="itemT.headImageUrl!=null||itemT.headImageUrl!=''"></image>
+        </view>
+        <view class='img' wx:if="{{groupList[index].relations.length==0}}">
+          <image src='http://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/head.jpg'></image>
+        </view>
+    </view>
+    <view class='group_contentRight'style="border-bottom : {{index==groupList.length-1?'':'1px solid #f2f2f2'}};">
+      <view class='title'>{{item.groupName}}({{item.relations.length}})</view>
+      <view class='p'wx:if="{{item.groupType!=null}}">{{item.groupType}}</view>
+    </view>
+  </view>
+</view>
+<view class='group_newcard' bindtap='addGroup'>
+  创建新名片组
+</view>

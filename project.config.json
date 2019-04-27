@@ -1,0 +1,85 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.0",
+	"appid": "wx8219ae22dc9edc3a",
+	"projectname": "card",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": 0,
+					"name": "本地扫码测试",
+					"pathName": "pages/Bootpage/Bootpage",
+					"query": "scene=9717A9",
+					"scene": 1011
+				},
+				{
+					"id": 1,
+					"name": "线上转发测试",
+					"pathName": "pages/index/index",
+					"query": "companyId=29559&wxCardEmployeeId=744",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "test3",
+					"pathName": "pages/login/login",
+					"query": "companyId=29559&wxCardEmployeeId=744",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "test3",
+					"pathName": "pages/video/video",
+					"query": "companyId=28246&wxCardEmployeeId=410",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "雷达",
+					"pathName": "pages/AI/AI",
+					"query": "companyId=9717&wxCardEmployeeId=9",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login"
+				}
+			]
+		}
+	}
+}

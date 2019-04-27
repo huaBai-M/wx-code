@@ -1,0 +1,67 @@
+<view class='trajectory'>
+  <view class="trajectory_top">
+    <view class='left'>
+      <text>{{timeAll}}</text>
+      <text class="iconfont icon-guanbi" wx:if="{{time1!=''||time2!=''}}" bindtap='delTime'></text>
+    </view>
+    <text class='iconfont icon-yt8 right' bindtap='openDia'></text>
+  </view>
+  <!--  -->
+  <view class='trajectory_total'>共{{total}}次</view>
+  <!--  -->
+  <view class='trajectory_list'>
+    <view class='trajectory_listLI' wx:for="{{dataAll}}" wx:key="{{index}}">
+      <view class='time'>{{item.date}}</view>
+      <view class='trajectory_listLIBox'>
+        <view class='left'>
+          <image src='{{item.headUrl}}'></image>
+        </view>
+        <view class='right'>
+             {{item.name}} <text class='make'>{{item.text}}</text><text class='make'>一次</text>,
+              尽快把握商机!
+        </view>
+      </view>
+      <!-- trajectory_listLIBox -->
+    </view>
+    <!--  trajectory_listLI-->
+  </view>
+  <!--trajectory_list  -->
+  <view class='trajectory_Timelist' wx:if="{{t1show}}">
+    <van-datetime-picker
+      type="date"
+      value="{{ currentDate1 }}"
+      bind:confirm="confirm1"
+    /> 
+  </view>
+  <!--  -->
+  <view class='trajectory_Timelist' wx:if="{{t2show}}">
+    <van-datetime-picker
+      type="date"
+      value="{{ currentDate2 }}"
+      bind:confirm="confirm2"
+    /> 
+  </view>
+  <!--  -->
+<van-dialog
+  use-slot
+  async-close
+  title="选择时间段"
+  show="{{ show }}"
+  show-cancel-button
+  bind:confirm="onClose"
+  bind:cancel="cancel"
+>
+<view class='timeBox'>
+  <view bindtap='openTime1' class='dialogTime'>
+    {{time1}}
+    <text class='iconfont icon-yt8'></text>
+  </view>
+  至
+  <view bindtap='openTime2' class='dialogTime'>
+    {{time2}}
+    <text class='iconfont icon-yt8'></text>
+  </view>
+</view>
+</van-dialog>
+<van-toast id="van-toast" />
+</view>

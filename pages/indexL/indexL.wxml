@@ -1,0 +1,121 @@
+<!--index.wxml-->
+<page>
+    <!-- <pop id='dialog'></pop> -->
+    <van-toast id="van-toast" />
+    <view class="pageBody">
+        <view class='addRotate'></view>
+        <view class='whites'>
+            <!-- <view class='iconCall' bindtap='calling'><text class='iconfont icon-mingpian2'></text></view> -->
+            <view class='addLine'>
+                <view class='back' bindtap='calling'><text class='iconfont icon-comeback'></text> 名片列表</view>
+            </view>
+            <view class="content">
+                <view class='leftContent'>
+                    <view class='name'>{{cardData.name}}
+                        <text class='job'>{{cardData.title==null?'':cardData.title}}</text>
+                    </view>
+                    <view class='line'></view>
+                </view>
+                <view class='rightContent'>
+                    <image src="{{cardData.cardImageUrl==null? 'https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/head.jpg':cardData.cardImageUrl}}" mode='widthFix'></image>
+                </view>
+                <view class='leftBottomContent'>
+                    <view class='tel'>
+                        <text class='iconfont icon-web-icon-'></text>{{cardData.telphone==null?'':cardData.telphone}}</view>
+                    <view class='mail'  wx:if="{{cardData.email!=null && cardData.email!=''}}">
+                        <text class='iconfont icon-youxiang'></text>{{cardData.email==null?'':cardData.email}}</view>
+                    <view class='company'  wx:if="{{companyData.company!=null && companyData.company!=''}}">
+                        <text class='iconfont icon-gongsimingcheng'></text>{{companyData.company==null?'':companyData.company}}</view>
+                </view>
+                <view class='rightBottomContent'>
+                    <image src="{{companyData.companyLogo}}" mode='widthFix'></image>
+                </view>
+            </view>
+
+    
+<!-- 免费 -->
+                <view class='add-renqi'>
+                    <view class='hots'>人气 <text>0</text></view>
+                    <view class='likes'>点赞 <text>0</text></view>
+                    <view class='shares'>转发 <text>0</text></view>
+                </view>
+                 <view class='operate'>
+                <view class='renqi ope callCode'  bindtap='erweima'>
+                    <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/xcxCode.png' mode='widthFix'></image>
+                    <text class='visitNum'>名片码</text>
+                </view>
+                <button class='dianzan ope' bindtap='clickZhuanfa' open-type="share" plain="true">
+                    <image  src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/shareFa.png' mode='widthFix'></image>
+                    <text>发名片</text>
+                </button>
+                <button class='zhuanfa ope callCode' bindtap='AIMat'>
+                    <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/AI.png' mode='widthFix'></image>
+                    <text>AI雷达</text>
+                </button>
+            </view>
+                <view class='addContent'>
+                    <view class="hideMessage addWhite">
+                    <view class='mesg tel'>
+                     <text class='iconfont icon-shouji'></text><text class='text'>手机</text><text class='item'>{{cardData.telphone}}</text><text class='btn' data-type="1" data-value="{{cardData.telphone}}"  bindtap='telerPhone'>拨打</text>
+                    </view>
+                    <view class='mesg weixin' wx:if="{{cardData.wechat!=null && cardData.wechat!=''}}">
+                     <text class='iconfont icon-weixin'></text><text class='text'>微信</text><text class='item'>{{cardData.wechat}}</text><text class='btn'data-value="{{cardData.wechat}}" data-type="0" bindtap='copy'>复制</text>
+                    </view>
+                    <view class='mesg mail' wx:if="{{cardData.email!=null && cardData.email!=''}}">
+                     <text class='iconfont icon-youxiang1'></text><text class='text'>邮箱</text><text class='item'>{{cardData.email}}</text><text class='btn' data-value="{{cardData.email}}" data-type="3" bindtap='copy'>复制</text>
+                    </view>
+                    <view class='mesg add' wx:if="{{companyData.companyLocation!=null && companyData.companyLocation!=''}}">
+                     <text class='iconfont icon-dizhi'></text><text class='text'>地址</text><text class='item'>{{companyData.companyLocation}}</text><text class='btn' data-type="4" data-value="{{companyData.companyLocation}}" bindtap='copy'>复制</text>
+                    </view>
+                </view>
+                </view>
+            
+        <!-- 本期推荐 -->
+        <view class="groom addGroom">
+            <view class='titleB'>本期推荐</view>
+            <view class='titleTel'>
+                暂无产品推荐，可开通会员使用更多功能。
+                <view>请联系客服热线 <text>{{tel}}</text></view>
+            </view>
+        </view>
+        <!-- 公司介绍 -->
+        <view class="introduce addGroom">
+           <view class='titleB'>公司介绍</view>
+           <view class='have' wx:if="{{false}}">
+            <image src='{{companyData.banner}}' mode='widthFix' class='comImg'></image>
+            <view class='texts'>{{companyData.description}}</view>
+           </view>
+           <view class='titleTel'>
+                暂无公司介绍，可开通会员使用更多功能。<view>请联系客服热线 <text>{{tel}}</text></view>
+           </view>
+        </view>
+        </view> 
+      
+
+
+    </view>
+<van-tabbar
+        active="{{ active }}"
+        bind:change="onChange"
+        >
+        <van-tabbar-item>
+            <image
+            slot="icon"
+            src="{{ icon.normal }}"
+            mode="aspectFit"
+            />
+            <image
+            slot="icon-active"
+            src="{{ icon.active }}"
+            mode="aspectFit"
+            />
+            首页
+        </van-tabbar-item>
+        <van-tabbar-item icon="search">产品</van-tabbar-item>
+        <van-tabbar-item icon="friends-o">看看</van-tabbar-item>
+        <van-tabbar-item icon="setting-o">消息</van-tabbar-item>
+  </van-tabbar>
+
+
+    
+</page>

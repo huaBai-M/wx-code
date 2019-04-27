@@ -1,0 +1,73 @@
+<!--pages/video/video.wxml-->
+<page>
+    <pop id='dialog'></pop>
+    <view class="pageBody"> 
+        <view class='video-list' wx:if="{{videoNone}}"> 
+            <van-row gutter="10">
+                <van-col span="12" wx:for="{{videoData}}" wx:key="{{ index }}">
+                    <view class='videoList'>
+
+                        <view class='mask' id="{{index}}" wx:if="{{_index!=index}}" bindtap='playVideo' data-video-Index='{{index}}' data-video-id='{{item.id}}'>
+                            <image src="{{item.previewImgUrl==''?'https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/head.jpg':item.previewImgUrl}}" mode='scaleToFill' class='showImg'></image>
+                            <view class='video-name'>{{item.title}}</view>
+                            <view class='video-mesg'>
+                                <view class='headImg'>
+                                    <image src="{{comName.cardImageUrl==null?'https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/head.jpg':comName.cardImageUrl}}" mode='scaleToFill'></image>
+                                    <text class='name'>{{comName.name}}</text>
+                                </view>
+                                <view class='view'>
+                                    <text class='iconfont icon-yanjing'></text>{{item.totalVisit}}</view>
+                            </view>
+
+                        </view>
+                    </view>
+                </van-col>
+            </van-row>
+            <view class='tiltes' wx:if="{{state}}">没有更多数据了~</view>
+        </view>
+         <!-- 没有数据时 -->
+            <view class='productNull' wx:if="{{!videoNone}}">
+                <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon3@2x.png' mode='widthFix'></image>
+                <view class='proN'>暂无视频</view>
+                <view class='titleA'>暂无视频推荐，可开通会员使用更多功能。
+                    <view>请联系客服热线 <text>{{cardMian}}</text></view>
+                </view>
+             </view>
+
+
+
+
+            
+            
+    </view>
+<van-tabbar
+        active="{{ active }}"
+        bind:change="onChangeTab"
+        z-index="{{9999}}"
+        >
+        <van-tabbar-item icon="setting-o">
+            首页
+        </van-tabbar-item>
+        <van-tabbar-item icon="search">产品</van-tabbar-item>
+        <van-tabbar-item>
+        <image
+            slot="icon"
+            src="{{ icon.normal }}"
+            mode="aspectFit"
+            />
+            <image
+            slot="icon-active"
+            src="{{ icon.active }}"
+            mode="aspectFit"
+            />
+            看看
+        </van-tabbar-item>
+        
+        <van-tabbar-item  icon="friends-o"> 消息
+        </van-tabbar-item>
+  </van-tabbar>
+
+
+
+    
+</page>

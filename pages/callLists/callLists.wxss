@@ -1,0 +1,44 @@
+/* pages/cardlist/cardlist.wxss */
+.cardListTop .cardListTopMi{
+  width:71rpx;
+  height: 50rpx;
+  background: #378bfc;
+  color: #f9f2f2;
+  font-size: 24rpx;
+  line-height: 50rpx;
+  display: block;
+  border-top-left-radius: 20000rpx;
+  border-bottom-left-radius: 20000rpx;
+  padding-right: 20rpx;
+  position: absolute;
+  right: 0;
+  bottom: 10rpx;
+}
+.cardListTopAbt{
+  display: flex;
+  background: #f0f8ff;
+  padding: 24rpx 12rpx 20rpx;
+}
+.cardListTopAbt>.cardListTopAbt_abt{
+  width: 450rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  background: #fff;
+  border-color: #fff;
+  font-size: 32rpx;
+  color: #006cff;
+  text-align: center;
+  margin: 0 15rpx;
+  border-radius: 10rpx;
+}
+.cardBox{
+  background: #f0f8ff;
+}
+page{
+  background: #f0f8ff;
+}
+.cardListTopAbt>.cardListTopAbt_activeAbt{
+  color: #fff;
+  background:#378bfc;
+
+}

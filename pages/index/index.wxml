@@ -1,0 +1,307 @@
+<!--index.wxml-->
+<page>
+    <pop id='dialog'></pop>
+    <van-toast id="van-toast" />
+    <view class="pageBody">
+        <view class='addRotate'></view>
+        <view class='whites'>
+            <!-- <view class='iconCall' bindtap='calling'><text class='iconfont icon-mingpian2'></text></view> -->
+            <view class='addLine'>
+                <view class='back' bindtap='calling'>
+                    <text class='iconfont icon-jinru-copy'></text> 名片列表</view>
+                <view class='created-my-card'  hidden='{{loginState==1}}' bindtap='createdCard'>
+                    <text class='iconfont icon-chuangjian'></text> 创建我的名片</view>
+                <view wx:if="{{ifShowBtn}}">
+                <view class='created-my-card'  hidden="{{allshow}}" bindtap='inMyCard'>
+                <text class='iconfont icon-jinru'></text> 进入我的名片</view>
+
+                <view class='created-my-card'  hidden="{{true}}" bindtap='inMyCard'>
+                <text class='iconfont icon-shujuguanli'></text> 数据管理</view>
+                </view>
+            </view>
+            <!-- <button bindtap='navigateToMiniProgram'>
+                点击按钮打开其他小程序
+            </button>
+            <official-account></official-account> -->
+            <view class="content">
+                <view class='leftContent'>
+                    <view class='name'>{{cardData.name}}
+                        <text class='job'>{{cardData.title==null?'':cardData.title}}</text>
+                    </view>
+                    <view class='line'></view>
+                </view>
+                <view class='rightContent'>
+                    <image src="{{cardData.cardImageUrl==null?'https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/head.jpg':cardData.cardImageUrl}}" mode='widthFix'></image>
+                </view>
+                <view class='leftBottomContent'>
+                    <view class='tel'>
+                        <text class='iconfont icon-web-icon-'></text>{{cardData.telphone==null?'':cardData.telphone}}</view>
+                    <view class='mail' wx:if="{{cardData.email!=null && cardData.email!=''}}">
+                        <text class='iconfont icon-youxiang'></text>{{cardData.email==null?'':cardData.email}}</view>
+                    <view class='company' wx:if="{{cardData.company!=null && cardData.company!=''}}">
+                        <text class='iconfont icon-gongsimingcheng'></text>{{cardData.company==null?'':cardData.company}}</view>
+                </view>
+                <view class='rightBottomContent'>
+                    <image src="{{companyData.companyLogo}}" mode='widthFix'></image>
+                </view>
+            </view>
+
+            <!-- 人氣 -->
+            <view class='operate' hidden="{{allshow}}">
+                <view class='renqi ope' style="padding-top:3rpx;">
+                    <image hidden='{{renqi}}' src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon_popularity_gray.png' mode='widthFix'></image>
+                    <image hidden='{{!renqi}}' src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon_popularity.png' mode='widthFix'></image>
+                    <text class='visitNum'>{{cardData.visitNum }}</text>
+                </view>
+                <button class='dianzan ope' bindtap='clickDianzan' disabled='{{abtdisabled}}'>
+                    <image hidden='{{!dianzan}}' src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon_likey_gray.png' mode='widthFix'></image>
+                    <image hidden='{{dianzan}}' src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon_like.png' mode='widthFix'></image>
+                    <text>点赞</text>
+                </button>
+                <button class='zhuanfa ope' bindtap='clickZhuanfa' open-type="share" plain="true">
+                    <image hidden='{{!zhuanfa}}' src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon_forwardy_gray.png' mode='widthFix'></image>
+                    <image hidden='{{zhuanfa}}' src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon_forward.png' mode='widthFix'></image>
+                    <text>转发</text>
+                </button>
+            </view>
+            <!-- 展开全部名片信息 -->
+            <view class='callMessage' hidden="{{allshow}}">
+                <view class='title' hidden="{{!trueOrFalse}}">
+                    <view class='text-zhankai' bindtap='showHide'>展开全部名片信息
+                        <text class='iconfont icon-xiajiantou'></text>
+                    </view>
+                    <!-- 二维码 -->
+                    <view class='erweiCode' bindtap='erweimaAdd'>
+                        <text class='iconfont icon-xiaochengxu'></text>
+                        <view class='textCode'>名片码</view>
+                    </view>
+                </view>
+                <view class='title' hidden="{{trueOrFalse}}">
+                    <view class='text-zhankai' bindtap='showHide'>收起全部名片信息
+                        <text class='iconfont icon-____-'></text>
+                    </view>
+                    <!-- 二维码 -->
+                    <view class='erweiCode' bindtap='erweimaAdd'>
+                        <text class='iconfont icon-xiaochengxu'></text>
+                        <view class='textCode'>名片码</view>
+                    </view>
+
+                </view>
+            </view>
+            <!-- 免费 -->
+            <view class='add-renqi' hidden="{{!allshow}}">
+                <view class='hots'>人气
+                    <text>{{cardData.visitNum}}</text>
+                </view>
+                <view class='likes'>点赞
+                    <text>{{cardData.thumbNum}}</text>
+                </view>
+                <view class='shares'>转发
+                    <text>{{cardData.transferNum}}</text>
+                </view>
+            </view>
+            <view class='operate' hidden="{{!allshow}}">
+                <view class='renqi ope callCode' bindtap='erweima'>
+                    <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/xcxCode.png' mode='widthFix'></image>
+                    <text class='visitNum'>名片码</text>
+                </view>
+                <button class='dianzan ope' bindtap='clickZhuanfa' open-type="share" plain="true">
+                    <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/shareFa.png' mode='widthFix'></image>
+                    <text>发名片</text>
+                </button>
+                <button class='zhuanfa ope callCode' bindtap='operation'>
+                    <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/AI.png' mode='widthFix'></image>
+                    <text>操作</text>
+                </button>
+                <!-- <button class='zhuanfa ope callCode' bindtap='AIMat'>
+                    <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/AI.png' mode='widthFix'></image>
+                    <text>AI</text>
+                </button> -->
+                <!-- <view class='renqi ope callCode' bindtap='msgUpdate'>
+                    <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/xcxCode.png' mode='widthFix'></image>
+                    <text class='visitNum'>修改</text>
+                </view> -->
+            </view>
+            <view class='addContent'>
+                <view class="hideMessage {{allshow? 'addWhite' : '' }}" hidden='{{trueOrFalse}}'>
+                    <view class='mesg tel'>
+                        <text class='iconfont icon-shouji'></text>
+                        <text class='text'>手机</text>
+                        <text class='item'>{{cardData.telphone}}</text>
+                        <text class='btn' data-type="1" data-value="{{cardData.telphone}}" bindtap='telerPhone'>拨打</text>
+                    </view>
+                    <view class='mesg weixin' wx:if="{{cardData.wechat!=null && cardData.wechat!=''}}">
+                        <text class='iconfont icon-weixin'></text>
+                        <text class='text'>微信</text>
+                        <text class='item'>{{cardData.wechat}}</text>
+                        <text class='btn' data-value="{{cardData.wechat}}" data-type="0" bindtap='copy'>复制</text>
+                    </view>
+                    <view class='mesg mail' wx:if="{{cardData.email!=null && cardData.email!=''}}">
+                        <text class='iconfont icon-youxiang1'></text>
+                        <text class='text'>邮箱</text>
+                        <text class='item'>{{cardData.email}}</text>
+                        <text class='btn' data-value="{{cardData.email}}" data-type="5" bindtap='copy'>复制</text>
+                    </view>
+                    <view class='mesg add' wx:if="{{cardData.companyLocation!=null && cardData.companyLocation!=''}}">
+                        <text class='iconfont icon-dizhi'></text>
+                        <text class='text'>地址</text>
+                        <text class='item'>{{cardData.companyLocation}}</text>
+                        <text class='btn' data-type="5" data-value="{{cardData.companyLocation}}" bindtap='copy'>复制</text>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 按钮 -->
+            <view class='btns' hidden="{{allshow}}">
+                <button class='change' bindtap='onShowChange' wx:if="{{stateShouQuan}}">交换名片</button>
+                <button open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber" class='change' wx:if="{{!stateShouQuan}}">交换名片
+                </button>
+                <button class='synchro' bindtap='phoneOpen'>同步通讯录</button>
+            </view>
+        </view>
+        <view class='blues'>
+            <!-- 天天惊喜 -->
+            <view class='banner' hidden="{{allshow}}">
+                <image src='https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/HBbanner.png' mode='widthFix'></image>
+            </view>
+            <!-- 本期推荐 -->
+            <view class="groom {{allshow?'addGroom':''}}">
+                <view class='titleB'>本期推荐</view>
+                <view class='proLists' hidden="{{tjState}}">
+                    <view class='list'>
+                        <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="500" circular="true">
+                            <swiper-item wx:for="{{HotProduct}}" wx:key="index" wx:for-item="list">
+
+                                <view class='raduis' wx:for="{{list}}" wx:key="index" wx:for-item="i" bindtap='hotproductfun' data-value="{{i}}">
+                                    <view class='addRadius'>
+                                        <view class='imgPro'>
+                                            <image src='{{i.banner}}' mode='widthFix'></image>
+                                        </view>
+                                        <view class='textPro'>
+                                            <view class='namePro'>{{i.productName}}</view>
+                                            <view class='imgsView'>
+                                                <view class='imgItem' wx:for="{{i.lastVisitImgs}}" wx:key="j" wx:for-item="j">
+                                                    <image src='{{j}}' mode='widthFix'></image>
+                                                </view>
+                                            </view>
+                                            <view class='numPro'>等{{i.todayVisitCount==null?'0':i.todayVisitCount}}人已查看</view>
+                                        </view>
+                                    </view>
+                                </view>
+                                <!-- <view class='raduis1' wx:if="{{hideProBtn}}">
+                       <view class='addRadius'>
+                            <view class='btnViewPro' bindtap='btnViewPro'>查看更多产品</view>
+                       </view>
+                    </view> -->
+                            </swiper-item>
+                        </swiper>
+                    </view>
+                </view>
+                <view class='titleTel' hidden="{{!tjState}}">
+                    暂无产品推荐，可开通会员使用更多功能。
+                    <view>请联系客服热线
+                        <text>{{cardMian}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 公司介绍 -->
+        <view class="introduce {{allshow?'addGroom':''}}">
+            <view class='titleB'>公司介绍</view>
+            <view class='have' hidden="{{jsState}}">
+                <image src='{{companyData.banner}}' mode='widthFix' class='comImg'></image>
+                <view class='texts'>{{companyData.description}}</view>
+            </view>
+            <view class='titleTel' hidden="{{!jsState}}">
+                暂无公司介绍，可开通会员使用更多功能。
+                <view>请联系客服热线
+                    <text>{{cardMian}}</text>
+                </view>
+            </view>
+        </view>
+        <!-- 交换名片弹框 -->
+        <view class='tankuang' catchtouchmove='catchtouch'>
+            <van-popup show="{{show}}" bind:close="onClose" close-on-click-overlay="{{false}}">
+                <view class='contentChange'>
+                    <text class='iconfont icon-guanbi rightClose' bindtap='changeHide'></text>
+                    <view class='imgHead'>
+                        <view class='leftImg'>
+                            <image src="{{cardData.cardImageUrl==null?'https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/head.jpg':cardData.cardImageUrl}}" mode='widthFix' class=''></image>
+                        </view>
+                        <text class='iconfont icon-qiehuan'></text>
+                        <view class='rightImg'>
+                            <image src='{{wxHeadUrl}}' mode='widthFix' class=''></image>
+                        </view>
+                    </view>
+                    <view class='contentMesg'>
+                        <view class='name msgC'>
+                            <text class='str'>*</text>
+                            <label>真实姓名</label>
+                            <input type='text' data-value="{{change.name}}" data-type='name' bindinput='nameval' value='{{change.name}}' />
+                        </view>
+                        <view class='tel msgC'>
+                            <text class='str'>*</text>
+                            <label>手机</label>
+                            <input type='text' data-value="{{change.tel}}" data-type='phone' value='{{change.tel}}' bindinput='nameval' />
+                        </view>
+                        <view class='company msgC'>
+                            <label>公司名称</label>
+                            <input type='text' value='{{change.company}}' data-value="{{change.company}}" data-type='company' placeholder='请输入您的公司名称' placeholder-style='font-size:14px;' bindinput='nameval' />
+                        </view>
+                        <view class='job msgC'>
+                            <label>职位</label>
+                            <input type='text' value='{{change.job}}' data-value="{{change.job}}" data-type='job' placeholder='请输入您的职位' placeholder-style='font-size:14px;' bindinput='nameval' />
+                        </view>
+                    </view>
+                    <view class='btnChange'>
+                        <button disabled='{{disabled}}' bindtap='clickCard'>交换名片</button>
+                    </view>
+                </view>
+            </van-popup>
+        </view>
+
+        <!-- 侧边栏 -->
+        <view class='side' hidden="{{allshow}}">
+            <view class='sideShow' wx:if='{{sideHide}}' bindtap='clickSide'>
+                <text class='iconfont icon-gengduo'></text>
+            </view>
+            <view class='sideHide' wx:if='{{!sideHide}}'>
+                <view class="iconfont icon-liuyan {{!white?'blue':'white'}} btnMessage" bindtap='clickBlue' wx:if="{{stateShouQuan}}"></view>
+                <button wx:if="{{!stateShouQuan}}" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumbers" class="iconfont icon-liuyan {{!white?'blue':'white'}} btnMessage">
+                </button>
+                <view class="iconfont icon-web-icon- {{white?'blue':'white'}}" bindtap='clickWhite'></view>
+            </view>
+        </view>
+        <!-- 操作弹出 -->
+        <view class='optPop'>
+            <van-popup
+            show="{{ showOpetion }}"
+            position="bottom"
+            overlay="{{ true }}"
+            bind:close="onClose2"
+            close-on-click-overlay="{{true}}"
+            >
+                <view class='botPop'>
+                    <view class='opt' bindtap='msgUpdate'>基本信息</view>
+                    <view class='opt' bindtap='AIMat'>AI雷达</view>
+                    <view class='opt' bindtap='titleOpen'>更多操作</view>
+                    <view class='opt' bindtap='onClose2'>取消</view>
+                </view>
+            </van-popup>
+        </view>
+
+    </view>
+
+
+
+
+    <!-- <van-tabbar active="{{ active }}" bind:change="onChangeTab">
+        <van-tabbar-item>
+            <image slot="icon" src="{{ icon.normal }}" mode="aspectFit" />
+            <image slot="icon-active" src="{{ icon.active }}" mode="aspectFit" /> 首页
+        </van-tabbar-item>
+        <van-tabbar-item icon="search">产品</van-tabbar-item>
+        <van-tabbar-item icon="friends-o">看看</van-tabbar-item>
+        <van-tabbar-item icon="setting-o">消息</van-tabbar-item>
+    </van-tabbar> -->
+</page>

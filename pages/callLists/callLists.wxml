@@ -1,0 +1,32 @@
+<view class='cardBox'>
+<pop id='dialog'></pop>
+<view class='cardListTop'>
+    <!-- <van-card
+      desc=""
+      title="{{userDataUrl.nickName}}"
+      thumb="{{userDataUrl.avatarUrl}}">
+    <view slot="footer">
+      <text class='cardListTopMi'>我的</text>
+    </view>
+</van-card> -->
+
+</view>
+<view class='cardListTopAbt'>
+  <view class='cardListTopAbt_abt {{abtClass?"cardListTopAbt_activeAbt":""}}'data-index="0" bindtap='activeAbt'>全部名片</view>
+  <view class='cardListTopAbt_abt {{abtClass?"":"cardListTopAbt_activeAbt"}}'data-index="1" bindtap='activeAbt'>名片夹</view>
+</view>
+<view wx:if="{{abtClass}}">
+<whole bind:openGroup="_openGroup" bind:pagesOne="_pagesOne" cardData="{{cardData}}" ></whole>
+</view>
+<view wx:if="{{!abtClass}}">
+ <group groupList="{{groupList}}" bind:allGroup="_allGroup" bind:addGroup="_addGroup"></group>
+</view>
+
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />
+<!--  -->
+<van-popup show="{{show}}" position="bottom" close-on-click-overlay="true" bind:click-overlay="clearPopup">
+  <van-picker columns="{{ columns }}"  bind:confirm="confirm" bind:cancel="cancel"show-toolbar/>
+</van-popup>
+
+</view>

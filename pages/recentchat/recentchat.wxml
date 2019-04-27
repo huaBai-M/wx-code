@@ -1,0 +1,55 @@
+<view class='recentchat-wrapper'>
+  <view wx:if="{{chatList.length == 0}}" class='no-recent productNull'>
+    <image src="https://page-bucket.oiaqye7985.com/wechat/mini-card/imgs/icon4@2x.png" class='no-recent-image' mode='widthFix'></image>
+    <view class='proN'>暂无聊天</view>
+  </view>
+  <view wx:if="{{chatList.length != 0}}" wx:for="{{chatList}}" wx:for-item="message" wx:key="message.time" data-session='{{message.session}}' catchtap='catchDeleteTap'> 
+    <swipe-delete>
+      <view wx:if="{{message.account !== '消息通知'}}" class='recentchat-item' hover-class='recentchat-item-hover' catchtap='stopEventPropagation'>
+        <image wx:if="{{message.account == userInfo.account}}" src='/images/computer.png' class='recentchat-item-img' data-account='{{message.account}}' catchtap='switchToPersonCard'></image>
+        <image wx:if="{{message.chatType == 'p2p' && message.account != userInfo.account}}" src='{{message.avatar}}' class='recentchat-item-img' data-account='{{message.account}}' catchtap='switchToPersonCard'></image>
+        <image wx:if="{{message.chatType == 'advanced'}}" src='/images/advanced.png' class='recentchat-item-img' data-account='{{message.account}}' catchtap='switchToPersonCard'></image>
+        <image wx:if="{{message.chatType == 'normal'}}" src='/images/normal.png' class='recentchat-item-img' data-account='{{message.account}}' catchtap='switchToPersonCard'></image>
+        <view class='recentchat-item-right' data-account='{{message.account}}'
+        data-session='{{message.session}}' catchtap='switchToChating'>
+          <view class='recentchat-item-top'>
+             <text wx:if="{{message.account != userInfo.account}}" class='recentchat-item-title'>{{message.nick || message.account}}</text>
+            <text class='recentchat-item-time'>{{message.displayTime}}</text>
+          </view>
+          <view class='recentchat-item-bottom'>
+            <view style='display:flex;align-items:center;'>
+              <text wx:if="{{message.account != userInfo.account && message.status}}" class='recentchat-item-status'>[{{message.status}}]</text>
+              <text class='recentchat-item-desc'>{{message.lastestMsg}}</text>
+            </view>
+            <view wx:if="{{message.unread}}" class='recentchat-item-unread'>{{message.unread || ''}}</view>
+          </view>
+        </view>
+      </view>
+    </swipe-delete>
+  </view>
+
+
+  <van-tabbar
+        active="{{ active }}"
+        bind:change="onChangeTab"
+        >
+        <van-tabbar-item icon="setting-o">
+            首页
+        </van-tabbar-item>
+        <van-tabbar-item icon="search">产品</van-tabbar-item>
+        <van-tabbar-item icon="friends-o">看看</van-tabbar-item>
+        <van-tabbar-item>
+        <image
+            slot="icon"
+            src="{{ icon.normal }}"
+            mode="aspectFit"
+            />
+            <image
+            slot="icon-active"
+            src="{{ icon.active }}"
+            mode="aspectFit"
+            />
+            消息
+        </van-tabbar-item>
+  </van-tabbar>
+</view>

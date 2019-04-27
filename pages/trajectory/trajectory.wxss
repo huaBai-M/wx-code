@@ -1,0 +1,98 @@
+page{
+  background: #f0f8ff;
+}
+.trajectory{
+  width: 100%;
+  /* height: 100%; */
+  background: #f0f8ff;
+  padding: 28rpx 26rpx;
+  box-sizing: border-box;
+}
+.trajectory_top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #666666;
+  width: 100%;
+  box-sizing: border-box;
+}
+.trajectory_top .left .iconfont{
+  font-size: 24rpx;
+  margin-left: 18rpx;
+}
+.trajectory_top .right{
+  font-size: 48rpx;
+  
+}
+.trajectory_total{
+  font-size: 26rpx;
+  color: #666666;
+  text-align: center;
+  margin: 47rpx 0 0;
+  letter-spacing:5rpx;
+}
+.trajectory_listLIBox{
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0 20rpx 30rpx;
+  background: #fff;
+  font-size: 32rpx;
+  color: #333333;
+ 
+}
+.trajectory_listLIBox .left{
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 28rpx;
+}
+.trajectory_listLIBox .left image{
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 50%;
+}
+.trajectory_listLI .time{
+  font-size: 26rpx;
+  color: #666666;
+  margin: 25rpx 0;
+  font-weight: 500;
+}
+.trajectory_listLIBox .make{
+  font-size: 32rpx;
+  color: #3480e8;
+}
+.trajectory_Timelist{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 999999999
+}
+.timeBox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40rpx 30rpx;
+}
+.timeBox .dialogTime{
+  width: 46%;
+  height: 60rpx;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 60rpx;
+  position: relative
+}
+.timeBox .dialogTime text{
+  font-size: 45rpx;
+  position: absolute;
+  right: 10rpx;
+}
+.trajectory .van-popup--center{
+  -webkit-transform:translate3d(-50%,-90%,0);
+transform:translate3d(-50%,-90%,0);
+
+}
